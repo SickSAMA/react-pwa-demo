@@ -1,0 +1,41 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.header {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.main__loading {
+  padding: 100px 0;
+  text-align: center;
+  font-size: 20px;
+}
+
+.movie {
+  margin: 30px 0;
+  padding: 0 15px;
+}
+.movie > h1 {
+  margin: 0 0 10px;
+}
+.movie > img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.movie__date {
+  color: #aaa;
+  margin-bottom: 20px;
+}
