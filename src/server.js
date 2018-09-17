@@ -2,7 +2,7 @@ import Express from 'express';
 import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { fetchMovie } from './app/fetch';
+import fetchDog from './app/fetchDog';
 import renderHtml from './html';
 import App from './app';
 
@@ -12,27 +12,39 @@ const port = 3000;
 // Serve static files
 app.use(Express.static(path.resolve(__dirname, '..', 'build')));
 
+function hydrateOnClient() {
+  return renderHtml({
+    assets: webpackIsomorphicTools.assets(), // eslint-disable-line
+    enableSW: true
+  });
+}
+
+app.use('/app-shell', (req, res) => {
+  res.send(hydrateOnClient());
+});
+
 // serve request
 app.use((req, res) => {
 
-  function hydrateOnClient() {
-    res.send(renderHtml(webpackIsomorphicTools.assets())); // eslint-disable-line
-  }
-
-  fetchMovie()
+  fetchDog()
     .then(response => {
-      const preloadedMovie = response.data;
+      const preloaded = response.data;
 
       // render the app
-      const html = renderToString(<App preloadedMovie={preloadedMovie} />);
+      const html = renderToString(<App preloaded={preloaded} />);
 
       // Send the rendered page back to the client
-      res.send(renderHtml(webpackIsomorphicTools.assets(), html, preloadedMovie)); // eslint-disable-line
+      res.send(renderHtml({
+        assets: webpackIsomorphicTools.assets(), // eslint-disable-line
+        html,
+        preloaded,
+        enableSW: true
+      }));
     })
     .catch(err => {
       console.error(err);
       res.status(500);
-      hydrateOnClient();
+      res.send(hydrateOnClient());
     });
 });
 

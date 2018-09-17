@@ -5,6 +5,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '..', 'build'),
     filename: '[name].[hash].js',
+    publicPath: '/'
   },
   devtool: 'source-map',
   module: {
@@ -17,7 +18,7 @@ module.exports = {
       },
       {
         test: /\.(js|jsx)$/,
-        exclude: [/node_modules/, path.resolve(__dirname, '..', 'build')],
+        exclude: /node_modules/,
         use: 'babel-loader'
       },
     ]
