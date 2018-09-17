@@ -1,6 +1,6 @@
 {
   "name": "react-pwa-demo",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "react pwa demo app",
   "main": "index.js",
   "dependencies": {

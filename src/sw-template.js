@@ -25,7 +25,7 @@ workbox.routing.registerNavigationRoute('/app-shell');
 
 // routing for api
 workbox.routing.registerRoute(
-  /^https:\/\/dog.ceo/i,
+  /^https:\/\/dog\.ceo/i,
   workbox.strategies.networkFirst({
     cacheName: 'react-pwa-demo-api-cache',
     plugins: [
