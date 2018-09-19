@@ -16,6 +16,6 @@ If you need to make some changes, you can do this in dev mode
 
 `npm run dev`
 
-##License
+## License
 
 MIT

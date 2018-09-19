@@ -27,12 +27,7 @@ workbox.routing.registerNavigationRoute('/app-shell');
 workbox.routing.registerRoute(
   /^https:\/\/dog\.ceo/i,
   workbox.strategies.networkFirst({
-    cacheName: 'react-pwa-demo-api-cache',
-    plugins: [
-      new workbox.cacheableResponse.Plugin({
-        statuses: [0, 200]
-      })
-    ]
+    cacheName: 'react-pwa-demo-api-cache'
   })
 );
 
@@ -43,8 +38,10 @@ workbox.routing.registerRoute(
     cacheName: 'react-pwa-demo-image-cache',
     plugins: [
       new workbox.expiration.Plugin({
-        maxEntries: 20,
-        maxAgeSeconds: 7 * 24 * 60 * 60
+        // Only cache requests for a week
+        maxAgeSeconds: 7 * 24 * 60 * 60,
+        // Only cache 20 requests.
+        maxEntries: 20
       }),
       new workbox.cacheableResponse.Plugin({
         statuses: [0, 200]
