@@ -1,5 +1,5 @@
 # react-pwa-demo
-Demo for server side rendered react pwa.
+This is the demo app for my blog article [How To Turn a Server-side-rendered React SPA into a PWA](https://sunkanqiang.com/how-to-turn-ssr-react-spa-into-pwa/)
 
 ## How To Start
 
