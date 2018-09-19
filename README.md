@@ -14,7 +14,9 @@ The app will be running in `localhost:3000`.
 
 If you need to make some changes, you can do this in dev mode
 
-`npm run dev`
+```
+npm run dev
+```
 
 ## License
 
