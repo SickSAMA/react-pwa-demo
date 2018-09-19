@@ -10,7 +10,9 @@ const app = Express();
 const port = 3000;
 
 // Serve static files
-app.use(Express.static(path.resolve(__dirname, '..', 'build')));
+app.use(Express.static(path.resolve(__dirname, '..', 'build'), {
+  maxAge: 365 * 24 * 3600000 // long time cache static files
+}));
 
 function hydrateOnClient() {
   return renderHtml({
