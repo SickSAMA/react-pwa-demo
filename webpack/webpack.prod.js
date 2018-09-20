@@ -37,7 +37,7 @@ module.exports = merge(common, {
     new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools-config')),
 
     new InjectManifest({
-      swDest: path.resolve(__dirname, '..', 'build/sw.js'),
+      swDest: 'sw.js',
       swSrc: path.resolve(__dirname, '..', 'src/sw-template.js'),
       include: ['/app-shell', /\.js$/, /\.css$/],
       templatedUrls: {
